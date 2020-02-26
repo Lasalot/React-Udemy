@@ -38,15 +38,12 @@ class App2 extends Component {
     this.setState({ showPersons: !doesShow });
   };
 
-  )
-
   render() {
     const style = {
       border: "1px solid black"
     };
 
     let persons = null;
-
 
     return (
       <div className="App">
