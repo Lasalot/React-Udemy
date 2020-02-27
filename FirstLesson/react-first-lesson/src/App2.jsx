@@ -45,19 +45,23 @@ class App2 extends Component {
 
     let persons = null;
 
+    if (this.state.showPersons) {
+      persons = (
+        <div>
+          {this.state.persons.map(person => {
+            return <Person name={person.name} age={person.age} />;
+          })}
+        </div>
+      );
+    }
+
     return (
       <div className="App">
         <h1>It is a React App</h1>
         <button onClick={this.togglePersonsHandler} style={style}>
           Toggle Persons
         </button>
-        {this.state.showPersons === true ? (
-          <div>
-            <Person name="Taki" />
-            <Person name="Taki" />
-            <Person name="Taki" />
-          </div>
-        ) : null}
+        {persons}
       </div>
     );
   }
