@@ -7,33 +7,35 @@ class App2 extends Component {
     persons: [
       { name: "Taki", age: 12 },
       { name: "Taki2", age: 14 },
-      { name: "Taki3", age: 13 }
+      { name: "Taki3", age: 13 },
+      { name: "Taki4", age: 16 }
     ],
     otherState: "Some other value",
     showPersons: false
   };
 
-  switchNameHandler = newName => {
-    this.setState({
-      persons: [
-        { name: newName, age: 12 },
-        { name: "Taki2", age: 14 },
-        { name: "Taki3", age: 13 }
-      ]
-    });
-  };
+  // switchNameHandler = newName => {
+  //   this.setState({
+  //     persons: [
+  //       { name: newName, age: 12 },
+  //       { name: "Taki2", age: 14 },
+  //       { name: "Taki3", age: 13 }
+  //     ]
+  //   });
+  // };
 
-  nameChangedHandler = event => {
-    this.setState({
-      persons: [
-        { name: "Max", age: 12 },
-        { name: event.target.value, age: 14 },
-        { name: "Taki3", age: 13 }
-      ]
-    });
-  };
+  // nameChangedHandler = event => {
+  //   this.setState({
+  //     persons: [
+  //       { name: "Max", age: 12 },
+  //       { name: event.target.value, age: 14 },
+  //       { name: "Taki3", age: 13 }
+  //     ]
+  //   });
+  // };
 
   togglePersonsHandler = () => {
+    //changes the state of showPersons from true to false , forth and back
     const doesShow = this.state.showPersons;
     this.setState({ showPersons: !doesShow });
   };
@@ -43,7 +45,7 @@ class App2 extends Component {
       border: "1px solid black"
     };
 
-    let persons = null;
+    let persons = null; // set the primary calue for persons, if null it shows nothing
 
     if (this.state.showPersons) {
       persons = (
