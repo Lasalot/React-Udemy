@@ -9,7 +9,6 @@ const person = props => {
 
       <p>{props.child}</p>
       <input placholder="Name" value={props.name} type="text" onChange={props.changed} />
-      {/* <input placholder="Age" value={props.age} type="text" /> */}
     </div>
   );
 };
