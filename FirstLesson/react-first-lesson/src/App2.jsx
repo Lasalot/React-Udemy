@@ -1,4 +1,3 @@
-import Radium, { StyleRoot } from "radium";
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
@@ -57,9 +56,10 @@ class App2 extends Component {
       cursor: "pointer",
       color: "white",
       ":hover": {
+        //Works only with Radium package
         backgroundColor: "lightgreen",
         color: "black"
-      } //Works only with Radium package
+      }
     };
 
     let persons = null; // set the primary value for persons, if null it shows nothing
@@ -98,18 +98,18 @@ class App2 extends Component {
     console.log(classes);
 
     return (
-      <StyleRoot>
-        <div className="App">
-          <h1>It is a React App</h1>
-          <p className={classes.join(" ")}>This really works</p>
-          <button onClick={this.togglePersonsHandler} style={style}>
-            Toggle Persons
-          </button>
-          {persons}
-        </div>
-      </StyleRoot>
+      // StyleRoot needed due to Radium
+
+      <div className="App">
+        <h1>It is a React App</h1>
+        <p className={classes.join(" ")}>This really works</p>
+        <button onClick={this.togglePersonsHandler} style={style}>
+          Toggle Persons
+        </button>
+        {persons}
+      </div>
     );
   }
 }
 
-export default Radium(App2);
+export default App2;
