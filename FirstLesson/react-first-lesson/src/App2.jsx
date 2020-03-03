@@ -1,3 +1,4 @@
+import Radium, { StyleRoot } from "radium";
 import React, { Component } from "react";
 import "./App.css";
 import Person from "./Person/Person";
@@ -49,7 +50,16 @@ class App2 extends Component {
 
   render() {
     const style = {
-      border: "1px solid black"
+      backgroundColor: "green",
+      font: "inherit",
+      border: "1px solud blue",
+      padding: "8px",
+      cursor: "pointer",
+      color: "white",
+      ":hover": {
+        backgroundColor: "lightgreen",
+        color: "black"
+      } //Works only with Radium package
     };
 
     let persons = null; // set the primary value for persons, if null it shows nothing
@@ -70,18 +80,36 @@ class App2 extends Component {
           })}
         </div>
       );
+      style.backgroundColor = "red";
+      style[":hover"] = {
+        backgroundColor: "#ffc6c4",
+        color: "black"
+      };
     }
 
+    const classes = [];
+    if (this.state.persons.length <= 2) {
+      classes.push("red"); //add the red class to <p> if persons count less than 2
+    }
+    if (this.state.persons.length <= 1) {
+      classes.push("bold"); //classes = ['red', 'bold']
+    }
+
+    console.log(classes);
+
     return (
-      <div className="App">
-        <h1>It is a React App</h1>
-        <button onClick={this.togglePersonsHandler} style={style}>
-          Toggle Persons
-        </button>
-        {persons}
-      </div>
+      <StyleRoot>
+        <div className="App">
+          <h1>It is a React App</h1>
+          <p className={classes.join(" ")}>This really works</p>
+          <button onClick={this.togglePersonsHandler} style={style}>
+            Toggle Persons
+          </button>
+          {persons}
+        </div>
+      </StyleRoot>
     );
   }
 }
 
-export default App2;
+export default Radium(App2);
