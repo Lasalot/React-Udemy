@@ -97,7 +97,7 @@ class App2 extends Component {
       // StyleRoot needed due to Radium
 
       <div className={classes.App}>
-        <h1>It is a React App</h1>
+        <h1>It is a React App Practice</h1>
         <p className={assignedClasses.join(" ")}>This really works</p>
         <button
           className={btnClass.join(" ")}
