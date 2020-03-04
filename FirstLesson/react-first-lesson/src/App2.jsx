@@ -1,20 +1,19 @@
 import React, { Component } from "react";
-import styled from "styled-components";
-import "./App.css";
+import classes from "./App.css";
 import Person from "./Person/Person";
 
-const StyledButton = styled.button`
-  background-color: ${props => (props.alt ? "red" : "green")};
-  font: inherit;
-  border: 1px solid blue;
-  padding: 8 px;
-  cursor: pointer;
-  color: white;
-  &:hover {
-    background-color: ${props => (props.alt ? "salmon" : "lightgreen")};
-    color: black;
-  }
-`;
+// const StyledButton = styled.button` // styled button using styled-components
+//   background-color: ${props => (props.alt ? "red" : "green")};
+//   font: inherit;
+//   border: 1px solid blue;
+//   padding: 8 px;
+//   cursor: pointer;
+//   color: white;
+//   &:hover {
+//     background-color: ${props => (props.alt ? "salmon" : "lightgreen")};
+//     color: black;
+//   }
+// `;
 
 class App2 extends Component {
   state = {
@@ -62,21 +61,8 @@ class App2 extends Component {
   };
 
   render() {
-    const style = {
-      backgroundColor: "green",
-      font: "inherit",
-      border: "1px solud blue",
-      padding: "8px",
-      cursor: "pointer",
-      color: "white",
-      ":hover": {
-        //Works only with Radium package
-        backgroundColor: "lightgreen",
-        color: "black"
-      }
-    };
-
     let persons = null; // set the primary value for persons, if null it shows nothing
+    let btnClass = [classes.Button];
 
     if (this.state.showPersons) {
       persons = (
@@ -94,35 +80,32 @@ class App2 extends Component {
           })}
         </div>
       );
-      style.backgroundColor = "red";
-      style[":hover"] = {
-        backgroundColor: "#ffc6c4",
-        color: "black"
-      };
+      btnClass.push(classes.Red);
     }
 
-    const classes = [];
+    const assignedClasses = [];
     if (this.state.persons.length <= 2) {
-      classes.push("red"); //add the red class to <p> if persons count less than 2
+      assignedClasses.push(classes.red); //add the red class to <p> if persons count less than 2
     }
     if (this.state.persons.length <= 1) {
-      classes.push("bold"); //classes = ['red', 'bold']
+      assignedClasses.push(classes.bold); //classes = ['red', 'bold']
     }
 
-    console.log(classes);
+    console.log(assignedClasses);
 
     return (
       // StyleRoot needed due to Radium
 
-      <div className="App">
-        <h1>It is a React App</h1>
-        <p className={classes.join(" ")}>This really works</p>
-        <StyledButton
+      <div className={classes.App}>
+        <h1>It is a React App Practice</h1>
+        <p className={assignedClasses.join(" ")}>This really works</p>
+        <button
+          className={btnClass.join(" ")}
           alt={this.state.showPersons}
           onClick={this.togglePersonsHandler}
         >
           Toggle Persons
-        </StyledButton>
+        </button>
         {persons}
       </div>
     );
