@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import classes from "./App.css";
-import ErrorBoundary from "./ErrorBoundary/ErrorBoundary";
 import Person from "./Person/Person";
 
 // const StyledButton = styled.button` // styled button using styled-components
@@ -70,7 +69,7 @@ class App2 extends Component {
         <div>
           {this.state.persons.map((person, index) => {
             return (
-              <ErrorBoundary key={person.id}>
+              // <ErrorBoundary key={person.id}>
                 <Person
                   key={person.id}
                   click={() => this.deletePersonHandler(index)}
@@ -78,7 +77,7 @@ class App2 extends Component {
                   age={person.age}
                   changed={event => this.nameChangedHandler(event, person.id)}
                 />{" "}
-              </ErrorBoundary>
+              // </ErrorBoundary>
             );
           })}
         </div>
