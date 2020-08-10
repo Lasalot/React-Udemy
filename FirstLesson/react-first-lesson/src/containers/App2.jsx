@@ -1,6 +1,8 @@
 import React, { Component } from "react";
 import Cockpit from "../Components/Cockpit/Cockpit";
 import Persons from "../Components/Persons/Persons";
+import Aux from "../hoc/Auxilliary";
+import withClass from "../hoc/withClass";
 import classes from "./App.css";
 
 // const StyledButton = styled.button` // styled button using styled-components
@@ -93,10 +95,20 @@ class App2 extends Component {
 
     return (
       // StyleRoot needed due to Radium
-      <div className={classes.App}>
-        <button onClick={() => this.setState({ showCockpit: false })}>
+      <Aux>
+        {/* <button onClick={() => this.setState({ showCockpit: false })}>
           Remove cockpit
-        </button>
+        </button> */}
+
+        {this.state.showCockpit ? (
+          <button onClick={() => this.setState({ showCockpit: false })}>
+            Remove cockpit
+          </button>
+        ) : (
+          <button onClick={() => this.setState({ showCockpit: true })}>
+            Show cockpit
+          </button>
+        )}
 
         {this.state.showCockpit ? (
           <Cockpit
@@ -107,9 +119,9 @@ class App2 extends Component {
         ) : null}
 
         {persons}
-      </div>
+      </Aux>
     );
   }
 }
 
-export default App2;
+export default withClass(App2, classes.App);

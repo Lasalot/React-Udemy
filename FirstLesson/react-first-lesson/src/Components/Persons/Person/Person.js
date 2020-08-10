@@ -1,5 +1,7 @@
 import React, { Component } from "react";
-import classes from "./Person.css";
+import Auxilliary from "../../../hoc/Auxilliary";
+import withClass from "../../../hoc/withClass";
+import classes from "../Person/Person.css";
 
 class Person extends Component {
   // const StyledDiv = styled.div`
@@ -19,21 +21,22 @@ class Person extends Component {
 
     return (
       // <div className="Person" style={style}>
-      <div className={classes.Person}>
+
+      // Instead of Auxillary, React.Fragment can be used as it is a built in option
+      <Auxilliary>
         <p onClick={this.props.click}>
           Username: {this.props.name} Age: {this.props.age}
         </p>
-
         <p>{this.props.child}</p>
         <input
           placholder="Name"
           value={this.props.name}
           type="text"
           onChange={this.props.changed}
-        />
-      </div>
+        />{" "}
+      </Auxilliary>
     );
   }
 }
 
-export default Person;
+export default withClass(Person, classes.Person);
